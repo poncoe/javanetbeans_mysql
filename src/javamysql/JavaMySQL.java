@@ -31,7 +31,7 @@ public class JavaMySQL {
     //Objek untuk JSON Converter
     static ArrayList<String> data = new ArrayList<String>();
     static PreparedStatement ps = null;
-    static String path = "mahasiswa.json";
+    static String path = "mahasiswa.json"; //Export file, Ekstensi bisa diubah, jadi .txt bisa, .json bisa, dll
     static String driver="com.mysql.jdbc.Driver";
     static String url="jdbc:mysql://localhost/mahasiswa";
     static String username="root";
@@ -122,7 +122,7 @@ public class JavaMySQL {
         url = "jdbc:mysql://localhost/mahasiswa";
         username = "root";
         password = "";
-        path = "mahasiswa.json";
+        path = "mahasiswa.json"; //Export file, Ekstensi bisa diubah, jadi .txt bisa, .json bisa, dll
         query = "select * from mahasiswa";
         
         Koneksi dc = new Koneksi();
