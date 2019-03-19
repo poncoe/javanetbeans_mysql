@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 // import java.sql.* (untuk import semuanya tanpa harus panggil satu2 kayak diatas)
 
@@ -25,6 +26,24 @@ public class Koneksi {
     static Connection conn;
     static Statement stmt;
     static ResultSet rs;
+    
+    public static Connection getDbConnection(String driver, String url,
+            String username, String password) {
+        // TODO Auto-generated constructor stub
+        try {
+
+            Class.forName(driver);
+
+            conn = DriverManager.getConnection(url, username, password);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return conn;
+    }
 
     public static void main(String[] args) {
         
