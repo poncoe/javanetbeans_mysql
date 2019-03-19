@@ -5,16 +5,21 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
-// import java.sql.*
+// import java.sql.* (untuk import semuanya tanpa harus panggil satu2 kayak diatas)
+
+/**
+ *
+ * @author poncoe
+ */
 
 
 public class Koneksi {
     
     // Menyiapkan paramter JDBC untuk koneksi ke datbase
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/mahasiswa";
-    static final String USER = "root";
-    static final String PASS = "";
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver"; //Driver dari Java Database Connection
+    static final String DB_URL = "jdbc:mysql://localhost/mahasiswa"; // Nama DB di localhost MySQL
+    static final String USER = "root"; // Username DB Kalian
+    static final String PASS = ""; // Pass DB Kalian
 
     // Menyiapkan objek yang diperlukan untuk mengelola database
     static Connection conn;

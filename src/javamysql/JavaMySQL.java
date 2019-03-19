@@ -8,13 +8,19 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
+/**
+ *
+ * @author poncoe
+ */
+
 public class JavaMySQL {
 
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost/mahasiswa";
-    static final String USER = "root";
-    static final String PASS = "";
+    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver"; //Driver dari Java Database Connection
+    static final String DB_URL = "jdbc:mysql://localhost/mahasiswa"; // Nama DB di localhost MySQL Kalian
+    static final String USER = "root"; // Username DB Kalian
+    static final String PASS = ""; // Pass DB Kalian
 
+    // Menyiapkan objek yang diperlukan untuk mengelola database
     static Connection conn;
     static Statement stmt;
     static ResultSet rs;
@@ -47,14 +53,14 @@ public class JavaMySQL {
     }
 
     static void showMenu() {
-        System.out.println("\n========= MENU UTAMA =========");
-        System.out.println("1. Insert Data");
-        System.out.println("2. Show Data");
-        System.out.println("3. Edit Data");
-        System.out.println("4. Delete Data");
-        System.out.println("0. Keluar");
+        System.out.println("\n========= SELAMAT DATANG =========");
+        System.out.println("1. Insert Data Mahasiswa");
+        System.out.println("2. Show Data Mahasiswa");
+        System.out.println("3. Edit Data Mahasiswa");
+        System.out.println("4. Delete Data Mahasiswa");
+        System.out.println("0. Keluar Aplikasi");
         System.out.println("");
-        System.out.print("PILIHAN> ");
+        System.out.print("Masukan Pilihan> ");
 
         try {
             int pilihan = Integer.parseInt(input.readLine());
@@ -76,7 +82,7 @@ public class JavaMySQL {
                     deleteMahasiswa();
                     break;
                 default:
-                    System.out.println("Pilihan salah!");
+                    System.out.println("Pilihan yang dimasukan salah!");
 
             }
         } catch (Exception e) {
@@ -85,7 +91,7 @@ public class JavaMySQL {
     }
 
     static void showData() {
-        String sql = "SELECT * FROM mahasiswa";
+        String sql = "SELECT * FROM mahasiswa"; // manggil db "mahasiswa" dan bisa diganti sesuai nama db kalian
 
         try {
             rs = stmt.executeQuery(sql);
@@ -104,6 +110,8 @@ public class JavaMySQL {
                 String fakultas = rs.getString("fakultas");
 
                 System.out.println(String.format("%d. %s -- %s --- %s", nim, nama, jurusan, fakultas));
+                // &d = decimal || &s = String
+                // kalo kalian ingin IO data pastikan tersambung dengan %s (string) / &d (int)
             }
 
         } catch (Exception e) {
@@ -154,7 +162,7 @@ public class JavaMySQL {
             String sql = "UPDATE mahasiswa SET nama='%s', jurusan='%s', fakultas='%s' WHERE nim=%d";
             sql = String.format(sql, nama, jurusan, fakultas, nim);
 
-            // update data buku
+            // update data mahasiswa
             stmt.execute(sql);
             
         } catch (Exception e) {
@@ -170,12 +178,12 @@ public class JavaMySQL {
             int nim = Integer.parseInt(input.readLine());
             
             // buat query hapus
-            String sql = String.format("DELETE FROM mahasiswa WHERE nim=%d", nim);
+            String sql = String.format("DELETE FROM mahasiswa WHERE nim=%d", nim); // manggil query nim
 
             // hapus data
             stmt.execute(sql);
             
-            System.out.println("Data telah terhapus...");
+            System.out.println("Data Mahasiswa Sudah Dihapus...");
         } catch (Exception e) {
             e.printStackTrace();
         }
