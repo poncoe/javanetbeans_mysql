@@ -1,4 +1,4 @@
-# Java Netbeans + MySQL (CRUD)
+# Java Netbeans + MySQL CRUD (with Special JSON Converter)
 
 Belajar membuat program Netbeans dengan bahasa Java dan terkoneksi dengan MySQL
 
